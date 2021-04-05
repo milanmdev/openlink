@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenLink</title>
+<!-- meta tags (desc) -->
+<meta name="description" content="Create short links to share with your friends, colleagues, and more!">
+<meta name="og:title" content="Open-sourced URL shortener. Built with JavaScript, powered by Node.js">
+<meta property="og:site_name" content="OpenLink">
+<meta name="og:type" content="website">
+<meta name="og:description" content="Create short links to share with your friends, colleagues, and more!">
+<meta name="theme-color" content="#008c58">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<meta http-equiv="refresh" content="0; url=<%= redirect %>">
+</head>
+<script type="text/javascript">
+    window.location.href = "<%= redirect %>"
+</script>
+<body class="bg-blue-900 text-white text-center">
+<h1 class="text-6xl font-bold pt-32 align mt-36">Redirecting</h1>
+<span class="text-2xl">Click <a class="text-purple-400" href="<%= redirect %>">here</a> if you don't get redirected.</span>
+</div>
+</body>
+</html>

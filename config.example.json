@@ -1,0 +1,9 @@
+{
+  "mode": "development or production",
+  "port": 80,
+  "staffkey": "INSERT_STAFF_KEY_HERE",
+  "database": {
+    "development": "INSERT_MONGO_URI_HERE",
+    "production": "INSERT_MONGO_URI_HERE"
+  }
+}

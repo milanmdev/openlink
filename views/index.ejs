@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>OpenLink</title>
+
+  <!-- meta tags (desc) -->
+  <meta name="description" content="Create short links to share with your friends, colleagues, and more!">
+  <meta name="og:title" content="Open-sourced URL shortener. Built with JavaScript, powered by Node.js">
+  <meta property="og:site_name" content="OpenLink">
+  <meta name="og:type" content="website">
+  <meta name="og:description" content="Create short links to share with your friends, colleagues, and more!">
+  <meta name="theme-color" content="#008c58">
+  <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+
+  <script src="./index.js" type="text/javascript"></script>
+  <script src="./create.js" type="text/javascript"></script>
+</head>
+
+<body class="bg-gray-800" onload="init()">
+  <div class="flex h-screen">
+    <div class="m-auto">
+      <div class="relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md py-5 pl-6 pr-8 sm:pr-6" id="success_message" style="display: none;">
+        <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+          <div class="text-green-500">
+            <svg class="w-6 sm:w-5 h-6 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="text-sm font-medium ml-3">Success</div>
+        </div>
+        <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Your link has been created!</div>
+        <div class="absolute sm:relative sm:top-auto sm:right-auto ml-auto right-4 top-4 text-gray-400 hover:text-gray-800 cursor-pointer" onclick="document.getElementById('success_message').style.display = 'none';">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md py-5 pl-6 pr-8 sm:pr-6" id="noinfo_message" style="display: none;">
+        <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+          <div class="text-red-500 border-2 border-red-500 rounded-full">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 sm:w-5 h-6 sm:h-5">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="text-sm font-medium ml-3">Error</div>
+        </div>
+        <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">You must provide a valid slug & link</div>
+        <div class="absolute sm:relative sm:top-auto sm:right-auto ml-auto right-4 top-4 text-gray-400 hover:text-gray-800 cursor-pointer" onclick="document.getElementById('noinfo_message').style.display = 'none';">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md py-5 pl-6 pr-8 sm:pr-6" id="noinfo_message" style="display: none;">
+        <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+          <div class="text-red-500 border-2 border-red-500 rounded-full">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 sm:w-5 h-6 sm:h-5">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="text-sm font-medium ml-3">Error</div>
+        </div>
+        <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">You must provide a valid slug & link</div>
+        <div class="absolute sm:relative sm:top-auto sm:right-auto ml-auto right-4 top-4 text-gray-400 hover:text-gray-800 cursor-pointer" onclick="document.getElementById('noinfo_message').style.display = 'none';">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md py-5 pl-6 pr-8 sm:pr-6" id="slug_exists" style="display: none;">
+        <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+          <div class="text-red-500 border-2 border-red-500 rounded-full">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 sm:w-5 h-6 sm:h-5">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="text-sm font-medium ml-3">Error</div>
+        </div>
+        <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">That slug is already taken</div>
+        <div class="absolute sm:relative sm:top-auto sm:right-auto ml-auto right-4 top-4 text-gray-400 hover:text-gray-800 cursor-pointer" onclick="document.getElementById('slug_exists').style.display = 'none';">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="lg:flex md:flex text-xl justify-center items-center border-4 border-dashed mx-auto border-orange-500 max-w-2xl py-4 px-4 m-auto">
+        <div class="font-semibold p-2"><input id="link" type="text" class="focus:outline-none border rounded px-2 py-1" placeholder="Link URL"></div>
+      </div>
+      <br>
+      <div class="lg:flex md:flex text-xl justify-center items-center border-4 border-dashed mx-auto border-orange-500 max-w-2xl py-4 px-4 m-auto">
+        <div class="font-semibold p-2"><span id="site_url" class="text-white"></span><span class="text-white mx-1 text-3xl">/</span><input id="slug" type="text" class="focus:outline-none border rounded px-2 py-1" placeholder="Slug"></div>
+        <button class="px-4 py-1 rounded-full focus:outline-none bg-blue-200 text-black shadow ml-2" onclick="create()">Create</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
