@@ -1,3 +1,4 @@
+## NOTE: This is no longer maintained
 
 # openlink
 Open-sourced URL shortener. Built with JavaScript, powered by Node.js.
